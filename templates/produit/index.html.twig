@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+
+{% block MainContent %}
+    <section id="page-hero" class="about-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-title text-center">
+                        <h1>FITHUB <span>shop</span></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+        {% for produit in produits %}
+
+            <!-- Shop Item -->
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="shop-box effect-item pt-50">
+                    <div class="shop-item position-relative content-overlay">
+                        <img src="{{ produit.image }}" alt="Produit1" width="350px" height="350px">
+                        <div class="content-details fadeIn-top">
+                            <ul>
+                                <li><a href="{{ path('panier_add',{'id':produit.id}) }}"><i class="fas fa-shopping-cart"></i></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="shop-title text-center">
+                        <h3>{{ produit.marque }}</h3>
+                        <p>{{ produit.description }}</p>
+                        <p>{{ produit.prix }} DT</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        {% else %}
+
+                <p>no records found</p>
+
+        {% endfor %}
+
+
+
+{% endblock %}

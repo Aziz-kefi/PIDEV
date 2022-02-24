@@ -1,0 +1,61 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block MainContent %}
+
+    <div id="bootstrapTable" class="mb-5">
+        <h4>Produit Table</h4>
+
+        <div class="card">
+            <div class="card-body">
+                {% for produit in produits %}
+                <table class="table" data-toggle="table" data-sort-class="table-active" data-sortable="true" data-search="true" data-pagination="true" data-show-refresh="true" data-show-columns="true" data-show-fullscreen="true" data-height="460">
+                    <thead>
+                    <tr>
+                        <th data-sortable="true">Produit ID</th>
+                        <th data-sortable="true">Produit ref</th>
+                        <th data-sortable="true">Marque Produit</th>
+                        <th data-sortable="true">Prix Produit</th>
+                        <th data-sortable="true">Description Produit</th>
+
+                        <th data-sortable="true">image</th>
+                        <th data-sortable="true">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr><td>{{ produit.id }}</td><td>{{ produit.ref }}</td><td>{{ produit.marque }}</td><td>{{ produit.prix }}</td><td>{{ produit.description }}</td>><td><img src="{{ produit.image }}" width="60" height="50"> </td><td> <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a><br>      <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a></td></tr>
+
+                    </tbody>
+
+                    {% else %}
+
+                        <p>no records found</p>
+
+                    {% endfor %}
+
+
+
+                </table>
+                <a href="{{ path('produit_new') }}">Create new</a>
+
+            </div>
+            <div class="card-arrow">
+                <div class="card-arrow-top-left"></div>
+                <div class="card-arrow-top-right"></div>
+                <div class="card-arrow-bottom-left"></div>
+                <div class="card-arrow-bottom-right"></div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+    </div>
+
+
+
+    </div>
+{% endblock %}
